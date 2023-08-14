@@ -133,3 +133,14 @@ input::-webkit-inner-spin-button
     display: flex;
     align-items: center;
 }
+form input.invalid {
+    border-color: hsl(0, 100%, 67%);
+}
+form .input-group.invalid {
+    color: hsl(0, 100%, 67%);
+}
+form .error-message {
+    font-size: 12px;
+    font-style: italic;
+    margin-top: 10px;
+}
