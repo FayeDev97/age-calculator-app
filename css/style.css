@@ -134,8 +134,6 @@ input::-webkit-inner-spin-button {
 
 .result-group {
     font-size: 4rem;
-    display: flex;
-    align-items: center;
     font-family: "Poppins-ExtraBoldItalic";
 }
 
