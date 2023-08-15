@@ -19,6 +19,7 @@ window.onload = function(e) {
         validateSingleInput(yearElement);
     })
     actionBtn.addEventListener("click", e => {
+        if(dayElement.classList.contains("invalid") || monthElement.classList.contains("invalid") || yearElement.classList.contains("invalid")) return;
         if(!checkEmptyField(dayElement, monthElement, yearElement)) return;
         if(isDateValid(dayElement, monthElement, yearElement)) {
             setAge({year: yearElement.value, month: monthElement.value, day: dayElement.value});
@@ -44,7 +45,7 @@ function validateSingleInput(input) {
             if(value < 1 || value > 12)  message = errorMessage.invalidMonth;
             break;
         case "year":
-            if(!value || value > new Date().getFullYear()) message = errorMessage.invalidYear;
+            if(!value || value > new Date().getFullYear() || value == 0) message = errorMessage.invalidYear;
             break;
     }
     changeInputState(input, message);
