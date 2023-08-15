@@ -30,7 +30,8 @@ window.onload = function(e) {
 var errorMessage = {
     invalidDay: "Must be valid day",
     invalidMonth: "Must be valid month",
-    invalidYear: "Must be in the past"
+    invalidYear: "Must be in the past",
+    emptyField: "This field is required"
 }
 // input validation
 function validateSingleInput(input) {
@@ -67,9 +68,9 @@ function isDateValid(dayElement, monthElement, yearElement) {
     return true;
 }
 function checkEmptyField(dayElement, monthElement, yearElement) {
-    if(!dayElement.value) changeInputState(dayElement, errorMessage.invalidDay);
-    if(!monthElement.value) changeInputState(monthElement, errorMessage.invalidMonth);
-    if(!yearElement.value) changeInputState(yearElement, errorMessage.invalidYear);
+    if(!dayElement.value) changeInputState(dayElement, errorMessage.emptyField);
+    if(!monthElement.value) changeInputState(monthElement, errorMessage.emptyField);
+    if(!yearElement.value) changeInputState(yearElement, errorMessage.emptyField);
     return (dayElement.value && monthElement.value) && yearElement.value;
 }
 
