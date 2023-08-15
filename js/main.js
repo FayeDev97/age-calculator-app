@@ -21,7 +21,7 @@ window.onload = function(e) {
     actionBtn.addEventListener("click", e => {
         if(!checkEmptyField(dayElement, monthElement, yearElement)) return;
         if(isDateValid(dayElement, monthElement, yearElement)) {
-            setAge(new Date(yearElement.value, monthElement.value, dayElement.value));
+            setAge({year: yearElement.value, month: monthElement.value, day: dayElement.value});
         }
     })
 }
@@ -99,22 +99,21 @@ function changeInputState(input, error = false) {
 }
 // calculate age
 function calculateAge(birthDay) {
-    let years, months, days, seconds;
+    let years, months, days;
     let today = new Date();
-    seconds = today - birthDay;
-    years = today.getUTCFullYear() - birthDay.getUTCFullYear();
-    if(today.getUTCMonth() < birthDay.getUTCMonth()) { 
+    years = today.getUTCFullYear() - birthDay.year;
+    if(today.getUTCMonth() < birthDay.month) { 
         years--;
-        months = 12 - birthDay.getUTCMonth() + today.getUTCMonth();
+        months = 12 - birthDay.month + today.getUTCMonth();
     }else {
-        months = today.getUTCMonth() - birthDay.getUTCMonth();
+        months = today.getUTCMonth() - birthDay.month;
     }
-    if(today.getUTCDate() < birthDay.getUTCDate()){
+    if(today.getUTCDate() < birthDay.day){
         months--;
-        let lastDay = new Date(birthDay.getUTCFullYear(), birthDay.getUTCMonth(), 0).getUTCDate();
-        days = (lastDay - birthDay.getUTCDate()) + today.getUTCDate();
+        let lastDay = new Date(birthDay.year, birthDay.month, 0).getUTCDate();
+        days = (lastDay - birthDay.day) + today.getUTCDate();
     }else {
-        days = today.getUTCDate() - birthDay.getUTCDate();
+        days = today.getUTCDate() - birthDay.day;
     }
     return {years, months, days}
 }
