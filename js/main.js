@@ -44,7 +44,7 @@ function validateSingleInput(input) {
             if(value < 1 || value > 12)  message = errorMessage.invalidMonth;
             break;
         case "year":
-            if(!value || value >= new Date().getFullYear()) message = errorMessage.invalidYear;
+            if(!value || value > new Date().getFullYear()) message = errorMessage.invalidYear;
             break;
     }
     changeInputState(input, message);
