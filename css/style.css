@@ -59,7 +59,7 @@ div.input-group:nth-child(2) {
 }
 
 div.input-group:last-child {
-    margin-right: 10rem;
+    margin-right: 7rem;
 }
 
 label {
@@ -67,12 +67,13 @@ label {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 2px;
+    color: hsl(0, 1%, 44%);
 }
 
 input {
     width: 4em;
-    padding: 5px;
-    padding-left: 10px;
+    padding: 1ch;
+    padding-left: 1ch;
     border: 1px solid hsl(0, 0%, 86%);
     border-radius: 6px;
     font-size: 32px;
@@ -103,11 +104,11 @@ input::-webkit-inner-spin-button {
 
 .separator>input[type="submit"] {
     border-radius: 100%;
-    padding: 2rem;
+    padding: 3rem;
     width: 6rem;
     height: 6rem;
     background: url("../assets/images/icon-arrow.svg") hsl(259, 100%, 65%) center no-repeat;
-    background-size: 2rem;
+    background-size: 3rem;
     border: none;
 }
 
@@ -139,4 +140,29 @@ form .error-message {
     font-size: .8em;
     font-style: italic;
     margin-top: 10px;
+}
+.mobile-only {
+    display: none;
+}
+/* mobile screen */
+@media (max-width: 600px) {
+    .mobile-only {
+        display: block;
+    }
+    input {
+        width: 3em;
+    }
+    div.input-group {
+        margin: 0!important;
+    }
+    .separator {
+        margin-bottom: 2em;
+        margin-top: 2em;
+    }
+    .separator>input[type="submit"] {
+        padding: 2rem;
+        width: 4rem;
+        height: 4rem;
+        background-size: 2rem;
+    }
 }
