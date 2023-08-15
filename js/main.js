@@ -19,7 +19,7 @@ window.onload = function(e) {
         validateSingleInput(yearElement);
     })
     actionBtn.addEventListener("click", e => {
-        checkEmptyField(dayElement, monthElement, yearElement);
+        if(!checkEmptyField(dayElement, monthElement, yearElement)) return;
         if(isDateValid(dayElement, monthElement, yearElement)) {
             setAge(new Date(yearElement.value, monthElement.value, dayElement.value));
         }
@@ -56,6 +56,13 @@ function isDateValid(dayElement, monthElement, yearElement) {
         changeInputState(dayElement, errorMessage.invalidDay)
         return false;
     };
+    // make sure date is in the past
+    if(new Date() - new Date(yearElement.value, monthElement.value, dayElement.value) < 0) {
+        changeInputState(dayElement, errorMessage.invalidDay);
+        changeInputState(monthElement, errorMessage.invalidMonth);
+        changeInputState(yearElement, errorMessage.invalidYear);
+        return false;
+    }
     return true;
 }
 function checkEmptyField(dayElement, monthElement, yearElement) {
