@@ -1,15 +1,28 @@
 @font-face {
     font-family: Poppins;
-    src: url("../assets/fonts/Poppins-Bold.ttf");
     src: url("../assets/fonts/Poppins-BoldItalic.ttf");
     src: url("../assets/fonts/Poppins-ExtraBold.ttf");
     src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf");
     src: url("../assets/fonts/Poppins-Italic.ttf");
+}
+@font-face {
+    font-family: "Poppins-Regular";
     src: url("../assets/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url("../assets/fonts/Poppins-Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Poppins-ExtraBoldItalic";
+    src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf");
+    font-weight: 800;
+    font-style: italic;
 }
 
 * {
-    font-family: "Poppins";
+    /* font-family: "Poppins"; */
     margin: 0;
     padding: 0;
 }
@@ -51,6 +64,7 @@ body>.wrapper {
 div.input-group {
     display: inline-flex;
     flex-direction: column;
+    font-family: "Poppins-Bold";
 }
 
 div.input-group:nth-child(2) {
@@ -78,6 +92,7 @@ input {
     border-radius: 6px;
     font-size: 32px;
     font-weight: 700;
+    font-family: "Poppins-regular";
 }
 
 input:hover,
@@ -119,17 +134,14 @@ input::-webkit-inner-spin-button {
 
 .result-group {
     font-size: 4rem;
-    font-weight: 800;
-    font-style: italic;
     display: flex;
     align-items: center;
+    font-family: "Poppins-ExtraBoldItalic";
 }
 
 /* form errors */
 form input.invalid {
     border-color: hsl(0, 100%, 67%);
-    font-weight: 400;
-    font-style: italic;
 }
 
 form .input-group.invalid {
@@ -137,28 +149,35 @@ form .input-group.invalid {
 }
 
 form .error-message {
+    font-family: "Poppins-regular";
     font-size: .8em;
     font-style: italic;
     margin-top: 10px;
 }
+
 .mobile-only {
     display: none;
 }
+
 /* mobile screen */
 @media (max-width: 600px) {
     .mobile-only {
         display: block;
     }
+
     input {
         width: 3em;
     }
+
     div.input-group {
-        margin: 0!important;
+        margin: 0 !important;
     }
+
     .separator {
         margin-bottom: 2em;
         margin-top: 2em;
     }
+
     .separator>input[type="submit"] {
         padding: 2rem;
         width: 4rem;
