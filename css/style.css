@@ -65,7 +65,7 @@ div.input-group:last-child {
 label {
     margin-bottom: 8px;
     text-transform: uppercase;
-    font-weight: 400;
+    font-weight: 700;
     letter-spacing: 2px;
 }
 
@@ -127,6 +127,8 @@ input::-webkit-inner-spin-button {
 /* form errors */
 form input.invalid {
     border-color: hsl(0, 100%, 67%);
+    font-weight: 400;
+    font-style: italic;
 }
 
 form .input-group.invalid {
