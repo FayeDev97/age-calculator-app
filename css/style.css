@@ -6,58 +6,69 @@
     src: url("../assets/fonts/Poppins-ExtraBoldItalic.ttf");
     src: url("../assets/fonts/Poppins-Italic.ttf");
     src: url("../assets/fonts/Poppins-Regular.ttf");
-    font-weight: 400i, 700, 800i;
 }
+
 * {
     font-family: "Poppins";
     margin: 0;
     padding: 0;
 }
-body > .wrapper {
+
+body>.wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     min-height: 100vh;
 }
+
 #app {
     margin-top: 5%;
     border-radius: 1rem;
     border-bottom-right-radius: 10rem;
     padding: 3rem;
 }
+
 /* colors */
 .black {
     color: black;
 }
+
 .purple {
     color: hsl(259, 100%, 65%);
 }
+
 /* background colors */
 .bg-white {
     background-color: hsl(0, 0%, 100%);
 }
+
 .bg-offwhite {
     background-color: hsl(0, 0%, 94%);
 }
+
 /* form elements */
 div.input-group {
     display: inline-flex;
     flex-direction: column;
 }
+
 div.input-group:nth-child(2) {
     margin-left: 1rem;
     margin-right: 1rem;
 }
+
 div.input-group:last-child {
     margin-right: 10rem;
 }
+
 label {
     margin-bottom: 8px;
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 2px;
 }
+
 input {
     width: 4em;
     padding: 5px;
@@ -66,15 +77,18 @@ input {
     border-radius: 6px;
     font-size: 32px;
     font-weight: 700;
-} 
-input:hover, input:focus {
-border: 1px solid hsl(259, 100%, 65%);
-cursor: pointer;
 }
-input::-webkit-inner-spin-button
-{
+
+input:hover,
+input:focus {
+    border: 1px solid hsl(259, 100%, 65%);
+    cursor: pointer;
+}
+
+input::-webkit-inner-spin-button {
     display: none;
 }
+
 /* separator */
 .separator {
     display: flex;
@@ -82,10 +96,12 @@ input::-webkit-inner-spin-button
     align-items: center;
     margin-bottom: 1rem;
 }
-.separator > hr {
+
+.separator>hr {
     flex: 1;
 }
-.separator > input[type="submit"] {
+
+.separator>input[type="submit"] {
     border-radius: 100%;
     padding: 2rem;
     width: 6rem;
@@ -94,10 +110,12 @@ input::-webkit-inner-spin-button
     background-size: 2rem;
     border: none;
 }
-.separator > input[type="submit"]:hover {
+
+.separator>input[type="submit"]:hover {
     cursor: pointer;
     background-color: black;
 }
+
 .result-group {
     font-size: 4rem;
     font-weight: 800;
@@ -105,12 +123,16 @@ input::-webkit-inner-spin-button
     display: flex;
     align-items: center;
 }
+
+/* form errors */
 form input.invalid {
     border-color: hsl(0, 100%, 67%);
 }
+
 form .input-group.invalid {
     color: hsl(0, 100%, 67%);
 }
+
 form .error-message {
     font-size: .8em;
     font-style: italic;
