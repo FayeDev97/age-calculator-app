@@ -21,8 +21,7 @@ window.onload = function(e) {
     actionBtn.addEventListener("click", e => {
         checkEmptyField(dayElement, monthElement, yearElement);
         if(isDateValid(dayElement, monthElement, yearElement)) {
-            // calculateAge();
-            // setAge();
+            setAge(new Date(yearElement.value, monthElement.value, dayElement.value));
         }
     })
 }
@@ -53,7 +52,11 @@ function validateSingleInput(input) {
 function isDateValid(dayElement, monthElement, yearElement) {
     // is day in month of the year ?
     let lastDay = new Date(yearElement.value, monthElement.value, 0).getUTCDate();
-    if(dayElement.value > lastDay) changeInputState(dayElement, errorMessage.invalidDay);
+    if(dayElement.value > lastDay) {
+        changeInputState(dayElement, errorMessage.invalidDay)
+        return false;
+    };
+    return true;
 }
 function checkEmptyField(dayElement, monthElement, yearElement) {
     if(!dayElement.value) changeInputState(dayElement, errorMessage.invalidDay);
@@ -88,4 +91,34 @@ function changeInputState(input, error = false) {
     }
 }
 // calculate age
+function calculateAge(birthDay) {
+    let years, months, days, seconds;
+    let today = new Date();
+    seconds = today - birthDay;
+    years = today.getUTCFullYear() - birthDay.getUTCFullYear();
+    if(today.getUTCMonth() < birthDay.getUTCMonth()) { 
+        years--;
+        months = 12 - birthDay.getUTCMonth() + today.getUTCMonth();
+    }else {
+        months = today.getUTCMonth() - birthDay.getUTCMonth();
+    }
+    if(today.getUTCDate() < birthDay.getUTCDate()){
+        months--;
+        let lastDay = new Date(birthDay.getUTCFullYear(), birthDay.getUTCMonth(), 0).getUTCDate();
+        days = (lastDay - birthDay.getUTCDate()) + today.getUTCDate();
+    }else {
+        days = today.getUTCDate() - birthDay.getUTCDate();
+    }
+    return {years, months, days}
+}
 // set age
+function setAge(birthDay) {
+    // get elements
+    let yearsElement = document.querySelector(".result-group .years")
+    let monthsElement = document.querySelector(".result-group .months")
+    let daysElement = document.querySelector(".result-group .days")
+    let {years, months, days} = calculateAge(birthDay);
+    yearsElement.innerHTML = years;
+    monthsElement.innerHTML = months;
+    daysElement.innerHTML = days;
+}
