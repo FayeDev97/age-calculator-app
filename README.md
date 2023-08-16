@@ -39,7 +39,7 @@ Users should be able to:
 ### Links
 
 - Live Site URL: [age calculator app](https://agecalculator.fayedev.com)
-- Solution URL: [my solution](https://github.com/FayeDev97/age-calculator-app)
+- Solution URL: [my solution](https://www.frontendmentor.io/solutions/responsive-calculator-app-using-flexbox-T8i95_d9R9)
 
 ### Built with
 
