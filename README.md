@@ -57,4 +57,4 @@ Users should be able to:
 ## Author
 
 - Website - [fayedev.com](https://fayedev.com)
-- Frontend Mentor - [@fayedev](https://www.frontendmentor.io/profile/fayedev)
+- Frontend Mentor - [@fayedev](https://www.frontendmentor.io/profile/FayeDev97)
