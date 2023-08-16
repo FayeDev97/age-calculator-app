@@ -19,11 +19,14 @@ window.onload = function(e) {
         validateSingleInput(yearElement);
     })
     actionBtn.addEventListener("click", e => {
-        if(dayElement.classList.contains("invalid") || monthElement.classList.contains("invalid") || yearElement.classList.contains("invalid")) return;
         if(!checkEmptyField(dayElement, monthElement, yearElement)) return;
         if(isDateValid(dayElement, monthElement, yearElement)) {
-            setAge({year: yearElement.value, month: monthElement.value, day: dayElement.value});
+            changeInputState(dayElement);
+            changeInputState(monthElement);
+            changeInputState(yearElement);
         }
+        if(dayElement.classList.contains("invalid") || monthElement.classList.contains("invalid") || yearElement.classList.contains("invalid")) return;
+        setAge({year: yearElement.value, month: monthElement.value, day: dayElement.value});
     })
 }
 // error messages to be displayed to user
