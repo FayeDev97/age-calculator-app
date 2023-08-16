@@ -1,10 +1,9 @@
-window.onload = function(e) {
-    
+window.onload = function (e) {
     // get input elements
     let dayElement = document.querySelector("input[name='day']");
     let monthElement = document.querySelector("input[name='month']");
     let yearElement = document.querySelector("input[name='year']");
-    
+
     // get button
     let actionBtn = document.querySelector(".separator input[type='submit']");
 
@@ -19,14 +18,14 @@ window.onload = function(e) {
         validateSingleInput(yearElement);
     })
     actionBtn.addEventListener("click", e => {
-        if(!checkEmptyField(dayElement, monthElement, yearElement)) return;
-        if(isDateValid(dayElement, monthElement, yearElement)) {
+        if (!checkEmptyField(dayElement, monthElement, yearElement)) return;
+        if (isDateValid(dayElement, monthElement, yearElement)) {
             changeInputState(dayElement);
             changeInputState(monthElement);
             changeInputState(yearElement);
         }
-        if(dayElement.classList.contains("invalid") || monthElement.classList.contains("invalid") || yearElement.classList.contains("invalid")) return;
-        setAge({year: yearElement.value, month: monthElement.value, day: dayElement.value});
+        if (dayElement.classList.contains("invalid") || monthElement.classList.contains("invalid") || yearElement.classList.contains("invalid")) return;
+        setAge({ year: yearElement.value, month: monthElement.value, day: dayElement.value });
     })
 }
 // error messages to be displayed to user
@@ -46,10 +45,10 @@ function validateSingleInput(input) {
             if (value < 1 || value > 31) message = errorMessage.invalidDay;
             break;
         case "month":
-            if(value < 1 || value > 12)  message = errorMessage.invalidMonth;
+            if (value < 1 || value > 12) message = errorMessage.invalidMonth;
             break;
         case "year":
-            if(!value || value > new Date().getFullYear() || value == 0) message = errorMessage.invalidYear;
+            if (!value || value > new Date().getFullYear() || value == 0) message = errorMessage.invalidYear;
             break;
     }
     changeInputState(input, message);
@@ -57,12 +56,12 @@ function validateSingleInput(input) {
 function isDateValid(dayElement, monthElement, yearElement) {
     // is day in month of the year ?
     let lastDay = new Date(yearElement.value, monthElement.value - 1, 0).getUTCDate();
-    if(dayElement.value > lastDay) {
+    if (dayElement.value > lastDay) {
         changeInputState(dayElement, errorMessage.invalidDay)
         return false;
     };
     // make sure date is in the past
-    if(new Date() - new Date(yearElement.value, monthElement.value - 1, dayElement.value) < 0) {
+    if (new Date() - new Date(yearElement.value, monthElement.value - 1, dayElement.value) < 0) {
         changeInputState(dayElement, errorMessage.invalidDay);
         changeInputState(monthElement, errorMessage.invalidMonth);
         changeInputState(yearElement, errorMessage.invalidYear);
@@ -71,9 +70,9 @@ function isDateValid(dayElement, monthElement, yearElement) {
     return true;
 }
 function checkEmptyField(dayElement, monthElement, yearElement) {
-    if(!dayElement.value) changeInputState(dayElement, errorMessage.emptyField);
-    if(!monthElement.value) changeInputState(monthElement, errorMessage.emptyField);
-    if(!yearElement.value) changeInputState(yearElement, errorMessage.emptyField);
+    if (!dayElement.value) changeInputState(dayElement, errorMessage.emptyField);
+    if (!monthElement.value) changeInputState(monthElement, errorMessage.emptyField);
+    if (!yearElement.value) changeInputState(yearElement, errorMessage.emptyField);
     return (dayElement.value && monthElement.value) && yearElement.value;
 }
 
@@ -81,23 +80,23 @@ function checkEmptyField(dayElement, monthElement, yearElement) {
 function changeInputState(input, error = false) {
     let parent = input.parentElement;
     let lastChild = parent.lastElementChild;
-    if(error){
+    if (error) {
         // add error message
-        if(!lastChild.classList.contains("error-message")) {
+        if (!lastChild.classList.contains("error-message")) {
             let span = document.createElement("span");
             span.textContent = error;
             span.classList.add("error-message");
             parent.appendChild(span);
             toggleInvalidClass();
         }
-    }else {
+    } else {
         // remove error message if present
-        if(lastChild.classList.contains("error-message")){
+        if (lastChild.classList.contains("error-message")) {
             parent.removeChild(lastChild);
             toggleInvalidClass();
         }
     }
-    function toggleInvalidClass(){
+    function toggleInvalidClass() {
         input.classList.toggle("invalid");
         parent.classList.toggle("invalid");
     }
@@ -107,20 +106,20 @@ function calculateAge(birthDay) {
     let years, months, days;
     let today = new Date();
     years = today.getUTCFullYear() - birthDay.year;
-    if(today.getUTCMonth() + 1 < birthDay.month) { 
+    if (today.getUTCMonth() + 1 < birthDay.month) {
         years--;
         months = 12 - birthDay.month + today.getUTCMonth() + 1;
-    }else {
+    } else {
         months = today.getUTCMonth() + 1 - birthDay.month;
     }
-    if(today.getUTCDate() < birthDay.day){
+    if (today.getUTCDate() < birthDay.day) {
         months--;
         let lastDay = new Date(birthDay.year, birthDay.month - 1, 0).getUTCDate();
         days = (lastDay - birthDay.day) + today.getUTCDate();
-    }else {
+    } else {
         days = today.getUTCDate() - birthDay.day;
     }
-    return {years, months, days}
+    return { years, months, days }
 }
 // set age
 function setAge(birthDay) {
@@ -128,7 +127,7 @@ function setAge(birthDay) {
     let yearsElement = document.querySelector(".result-group .years")
     let monthsElement = document.querySelector(".result-group .months")
     let daysElement = document.querySelector(".result-group .days")
-    let {years, months, days} = calculateAge(birthDay);
+    let { years, months, days } = calculateAge(birthDay);
     yearsElement.innerHTML = years;
     monthsElement.innerHTML = months;
     daysElement.innerHTML = days;
