@@ -53,13 +53,13 @@ function validateSingleInput(input) {
 }
 function isDateValid(dayElement, monthElement, yearElement) {
     // is day in month of the year ?
-    let lastDay = new Date(yearElement.value, monthElement.value, 0).getUTCDate();
+    let lastDay = new Date(yearElement.value, monthElement.value - 1, 0).getUTCDate();
     if(dayElement.value > lastDay) {
         changeInputState(dayElement, errorMessage.invalidDay)
         return false;
     };
     // make sure date is in the past
-    if(new Date() - new Date(yearElement.value, monthElement.value, dayElement.value) < 0) {
+    if(new Date() - new Date(yearElement.value, monthElement.value - 1, dayElement.value) < 0) {
         changeInputState(dayElement, errorMessage.invalidDay);
         changeInputState(monthElement, errorMessage.invalidMonth);
         changeInputState(yearElement, errorMessage.invalidYear);
@@ -104,15 +104,15 @@ function calculateAge(birthDay) {
     let years, months, days;
     let today = new Date();
     years = today.getUTCFullYear() - birthDay.year;
-    if(today.getUTCMonth() < birthDay.month) { 
+    if(today.getUTCMonth() + 1 < birthDay.month) { 
         years--;
-        months = 12 - birthDay.month + today.getUTCMonth();
+        months = 12 - birthDay.month + today.getUTCMonth() + 1;
     }else {
-        months = today.getUTCMonth() - birthDay.month;
+        months = today.getUTCMonth() + 1 - birthDay.month;
     }
     if(today.getUTCDate() < birthDay.day){
         months--;
-        let lastDay = new Date(birthDay.year, birthDay.month, 0).getUTCDate();
+        let lastDay = new Date(birthDay.year, birthDay.month - 1, 0).getUTCDate();
         days = (lastDay - birthDay.day) + today.getUTCDate();
     }else {
         days = today.getUTCDate() - birthDay.day;
