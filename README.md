@@ -8,7 +8,6 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
-- [My process](#my-process)
   - [Built with](#built-with)
   - [Useful resources](#useful-resources)
 - [Author](#author)
@@ -33,20 +32,20 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![desktop](./desktop.png)
+![mobile](./mobile.png)
 
 
 ### Links
 
 - Live Site URL: [age calculator app](https://agecalculator.fayedev.com)
-
-## My process
+- Solution URL: [my solution](https://github.com/FayeDev97/age-calculator-app)
 
 ### Built with
 
 - Semantic HTML5 markup
 - CSS custom properties
-- CSS Grid
+- CSS Flexbox
 - Mobile-first workflow
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
